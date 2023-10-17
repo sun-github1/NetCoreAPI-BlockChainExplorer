@@ -1,0 +1,17 @@
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Infrastructure.deps.json
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Infrastructure.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Infrastructure.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Application.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Domain.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Application.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\bin\Debug\net6.0\BlockchainExplorer.Domain.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.csproj.AssemblyReference.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.AssemblyInfoInputs.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.AssemblyInfo.cs
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.csproj.CopyComplete
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\refint\BlockchainExplorer.Infrastructure.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\BlockchainExplorer.Infrastructure.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Infrastructure\obj\Debug\net6.0\ref\BlockchainExplorer.Infrastructure.dll

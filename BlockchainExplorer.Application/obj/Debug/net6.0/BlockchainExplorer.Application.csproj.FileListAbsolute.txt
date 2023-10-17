@@ -1,0 +1,15 @@
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\bin\Debug\net6.0\BlockchainExplorer.Application.deps.json
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\bin\Debug\net6.0\BlockchainExplorer.Application.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\bin\Debug\net6.0\BlockchainExplorer.Application.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\bin\Debug\net6.0\BlockchainExplorer.Domain.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\bin\Debug\net6.0\BlockchainExplorer.Domain.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.csproj.AssemblyReference.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.AssemblyInfoInputs.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.AssemblyInfo.cs
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.csproj.CoreCompileInputs.cache
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.csproj.CopyComplete
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\refint\BlockchainExplorer.Application.dll
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\BlockchainExplorer.Application.pdb
+D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.Application\obj\Debug\net6.0\ref\BlockchainExplorer.Application.dll
