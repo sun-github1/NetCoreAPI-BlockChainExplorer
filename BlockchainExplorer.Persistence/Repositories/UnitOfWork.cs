@@ -9,18 +9,17 @@ namespace BlockchainExplorer.Persistence.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _db;
-        public IBlockChainRepository BlockChain { get; private set; }
-
+        private readonly ApplicationDbContext _context;
+        private IBlockChainRepository _blockChainRepository;
         public UnitOfWork(ApplicationDbContext db)
         {
-            _db = db;
-            BlockChain = new BlockChainRepository(_db);
+            _context = db;
         }
+        public IBlockChainRepository BlockChain => _blockChainRepository ??= new BlockChainRepository(_context);
 
         public async Task Save()
         {
-           await _db.SaveChangesAsync();
+           await _context.SaveChangesAsync();
         }
     }
 }

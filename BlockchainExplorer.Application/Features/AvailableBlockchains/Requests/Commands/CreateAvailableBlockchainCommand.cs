@@ -12,6 +12,6 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.
 {
     public class CreateAvailableBlockchainCommand : IRequest<BaseCommandResponse>
     {
-        public CoinType CreateCoinType { get; set; }
+        public string CreateCoinType { get; set; }
     }
 }
