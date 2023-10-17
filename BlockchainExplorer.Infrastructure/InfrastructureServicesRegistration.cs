@@ -13,10 +13,18 @@ namespace BlockchainExplorer.Infrastructure
 {
     public static class InfrastructureServicesRegistration
     {
-        public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection services, 
+        public static IServiceCollection ConfigureInfrastructureServices(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.Configure<BlockCypherSettings>(opts => configuration.GetSection("BlockCypherSettings"));
+            BlockCypherSettings blockCypherSettings = new BlockCypherSettings();
+            services.Configure<BlockCypherSettings>(opts =>
+            {
+                new BlockCypherSettings
+                {
+                    Token = configuration.GetSection("BlockCypherSettings:Token")?.Value,
+                    BaseUrl = configuration.GetSection("BlockCypherSettings:BaseUrl")?.Value
+                };
+            });
             //services.AddHttpClient<IBlockCypherWrapper, BlockCypherWrapper>();
             services.AddHttpClient();
             services.AddTransient<IBlockCypherWrapper, BlockCypherWrapper>();

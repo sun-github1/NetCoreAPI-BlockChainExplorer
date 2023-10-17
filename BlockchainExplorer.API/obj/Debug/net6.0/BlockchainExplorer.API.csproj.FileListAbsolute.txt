@@ -14,7 +14,6 @@ D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\n
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\BlockchainExplorer.API.AssemblyInfoInputs.cache
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\BlockchainExplorer.API.AssemblyInfo.cs
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\BlockchainExplorer.API.csproj.CoreCompileInputs.cache
-D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\BlockchainExplorer.API.MvcApplicationPartsAssemblyInfo.cs
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\BlockchainExplorer.API.MvcApplicationPartsAssemblyInfo.cache
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\staticwebassets\msbuild.BlockchainExplorer.API.Microsoft.AspNetCore.StaticWebAssets.props
 D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\obj\Debug\net6.0\staticwebassets\msbuild.build.BlockchainExplorer.API.props

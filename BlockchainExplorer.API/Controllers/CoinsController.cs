@@ -20,21 +20,18 @@ namespace BlockchainExplorer.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet("{coinType}")]
         public async Task<ActionResult<AvailableBlockchainDto>> GetAndStoreAvailableBlockChain([Required] string coinType)
         {
-            if (Enum.TryParse(coinType, true, out CoinType resultCointType))
-            {
-                var result = await _mediator.Send(new CreateAvailableBlockchainCommand() { CreateCoinType = resultCointType });
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest("Invalid Coin Type");
-            }
+            var resultOfCreation = await _mediator.Send(new CreateAvailableBlockchainCommand() { CreateCoinType = coinType });
+            if (!resultOfCreation.Success)
+                throw new Exception(resultOfCreation.Message);
+
+            var result = await _mediator.Send(new GetAvailableBlockchainRequest() { Id = resultOfCreation.Id });
+            return Ok(result);
         }
 
-        [HttpGet("{hash}")]
+        [HttpGet("hash/{hash}")]
         public async Task<ActionResult<IEnumerable<AvailableBlockchainDto>>> GetHistoryByHash(string hash)
         {
             var result = await _mediator.Send(new GetAvailableBlockchainHistoryRequest() { HashId = hash });

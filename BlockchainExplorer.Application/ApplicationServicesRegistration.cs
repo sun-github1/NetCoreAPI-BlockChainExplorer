@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using MediatR;
+using BlockchainExplorer.Application.DTOs;
+using BlockchainExplorer.Domain.Enitites;
 
 namespace BlockchainExplorer.Application
 {
