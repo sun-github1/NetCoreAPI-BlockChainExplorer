@@ -1,4 +1,6 @@
 bin/
 obj/
 *.dll
-.vs/BlockchainExplorer/v17/.suo
+.vs/
+*.vsidx
+FileContentIndex/
