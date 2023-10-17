@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using BlockchainExplorer.Application.DTOs;
+using BlockchainExplorer.Application.DTOs.Common;
+using BlockchainExplorer.Domain.Common;
 using BlockchainExplorer.Domain.Enitites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BlockchainExplorer.Application.Profiles
 {
@@ -14,6 +12,7 @@ namespace BlockchainExplorer.Application.Profiles
         public MappingProfile()
         {
             CreateMap<AvailableBlockchain, AvailableBlockchainDto>().ReverseMap();
+            CreateMap<BlockCypherResponse, BlockCypherResponseDto>().ReverseMap();
         }
     }
 }
