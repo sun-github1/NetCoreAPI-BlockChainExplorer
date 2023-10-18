@@ -38,7 +38,7 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.
                 if (!Enum.TryParse(request.CreateCoinType, true, out CoinType resultCoinType))
                     throw new BadRequestException("Invalid CoinType");
                 //TODO: try catch
-                var serviceResponse = await _blockCypherWrapper.GetAvaialableBlockChainByCoin(resultCoinType);
+                var serviceResponse = await _blockCypherWrapper.GetAvaialableBlockChainFromBlockCypherAPI(resultCoinType);
                 if (serviceResponse != null)
                 {
                     var newblockChain = new AvailableBlockchain
