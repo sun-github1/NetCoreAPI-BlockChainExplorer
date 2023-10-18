@@ -13,15 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{CF2CFF3F-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C127A8BE-1BD1-4C1D-902B-B6018A0942FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.Domain", "BlockchainExplorer.Domain\BlockchainExplorer.Domain.csproj", "{70FEE74E-96B1-4552-87FC-C3BF62F91330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Domain", "BlockchainExplorer.Domain\BlockchainExplorer.Domain.csproj", "{70FEE74E-96B1-4552-87FC-C3BF62F91330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.Application", "BlockchainExplorer.Application\BlockchainExplorer.Application.csproj", "{E06A21E6-F509-486B-92A4-D11EF0F04524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Application", "BlockchainExplorer.Application\BlockchainExplorer.Application.csproj", "{E06A21E6-F509-486B-92A4-D11EF0F04524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.Infrastructure", "BlockchainExplorer.Infrastructure\BlockchainExplorer.Infrastructure.csproj", "{FFFBF05E-CAE8-4965-BD30-AFC75E829182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Infrastructure", "BlockchainExplorer.Infrastructure\BlockchainExplorer.Infrastructure.csproj", "{FFFBF05E-CAE8-4965-BD30-AFC75E829182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.Persistence", "BlockchainExplorer.Persistence\BlockchainExplorer.Persistence.csproj", "{9AB945F7-88E1-4D4B-A11C-FB0FFAE17F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Persistence", "BlockchainExplorer.Persistence\BlockchainExplorer.Persistence.csproj", "{9AB945F7-88E1-4D4B-A11C-FB0FFAE17F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.API", "BlockchainExplorer.API\BlockchainExplorer.API.csproj", "{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.API", "BlockchainExplorer.API\BlockchainExplorer.API.csproj", "{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.UnitTests", "BlockchainExplorer.UnitTests\BlockchainExplorer.UnitTests.csproj", "{17BC1C36-715A-43F6-8983-0C75D19846F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BC1C36-715A-43F6-8983-0C75D19846F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BC1C36-715A-43F6-8983-0C75D19846F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BC1C36-715A-43F6-8983-0C75D19846F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BC1C36-715A-43F6-8983-0C75D19846F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{FFFBF05E-CAE8-4965-BD30-AFC75E829182} = {C127A8BE-1BD1-4C1D-902B-B6018A0942FF}
 		{9AB945F7-88E1-4D4B-A11C-FB0FFAE17F32} = {C127A8BE-1BD1-4C1D-902B-B6018A0942FF}
 		{B39DE0E7-F075-4334-8D2C-9A22D779DEE3} = {E1695D5F-518C-466D-A483-FD0441648B61}
+		{17BC1C36-715A-43F6-8983-0C75D19846F0} = {05C92845-F26D-4617-88EC-0BC8EF87DF80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6EBFF83-B823-4E18-B148-C33E491B0D03}

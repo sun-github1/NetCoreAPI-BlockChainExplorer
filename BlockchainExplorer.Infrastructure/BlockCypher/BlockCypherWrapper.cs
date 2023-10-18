@@ -25,7 +25,7 @@ namespace BlockchainExplorer.Infrastructure.BlockCypher
             _blockCypherSettings = blockCypherSettings.Value;
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<BlockCypherResponse> GetAvaialableBlockChainByCoin(CoinType coinType)
+        public async Task<BlockCypherResponse> GetAvaialableBlockChainFromBlockCypherAPI(CoinType coinType)
         {
             var httpClient = _httpClientFactory.CreateClient();//https://api.blockcypher.com/v1
             string url = $"{_blockCypherSettings.BaseUrl}/{coinType.ToString()}/main?token={_blockCypherSettings.Token}";

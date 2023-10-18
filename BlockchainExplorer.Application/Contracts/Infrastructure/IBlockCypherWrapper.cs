@@ -11,6 +11,6 @@ namespace BlockchainExplorer.Application.Contracts.Infrastructure
     public interface IBlockCypherWrapper
     {
         //call API
-        Task<BlockCypherResponse> GetAvaialableBlockChainByCoin(CoinType coinType);
+        Task<BlockCypherResponse> GetAvaialableBlockChainFromBlockCypherAPI(CoinType coinType);
     }
 }
