@@ -28,7 +28,9 @@ namespace BlockchainExplorer.API
             builder.Services.ConfigureInfrastructureServices(builder.Configuration);
             builder.Services.ConfigurePersistenceServices(builder.Configuration);
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(options => {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            }); ;
 
             builder.Services.AddCors(o =>
             {
@@ -49,7 +51,7 @@ namespace BlockchainExplorer.API
             // Configure the HTTP request pipeline.
             app.UseSwagger();
             app.UseSwaggerUI();
-
+            
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
