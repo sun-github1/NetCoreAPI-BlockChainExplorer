@@ -53,7 +53,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.NotNull(result);
             Assert.IsType<BaseCommandResponse>(result);
             Assert.True(result.Success);
-            Assert.True(result.Id>0);
+            Assert.True(result.Data?.Id>0);
 
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //check if it is added to repository
@@ -71,9 +71,8 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.NotNull(result);
             Assert.IsType<BaseCommandResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count>0);
-            Assert.Contains("Coin Type should not be empty", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i=>i=="Coin Type should not be empty"));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());
@@ -91,9 +90,8 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.NotNull(result);
             Assert.IsType<BaseCommandResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count > 0);
-            Assert.Contains("Coin Type should be of of 3 characters", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type should be of of 3 characters")));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());
@@ -110,9 +108,8 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.NotNull(result);
             Assert.IsType<BaseCommandResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count > 0);
-            Assert.Contains("Only btc, eth, dash coin types are supported", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Only btc, eth, dash coin types are supported")));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());

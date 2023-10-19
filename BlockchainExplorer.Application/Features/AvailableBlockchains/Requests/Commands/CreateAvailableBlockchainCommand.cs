@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Commands
 {
-    public class CreateAvailableBlockchainCommand : IRequest<BaseCommandResponse>
+    public class CreateAvailableBlockchainCommand : IRequest<AvailableBlockchainResponse>
     {
         public string CreateCoinType { get; set; }
     }

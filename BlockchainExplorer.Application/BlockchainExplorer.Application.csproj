@@ -19,8 +19,4 @@
     <ProjectReference Include="..\BlockchainExplorer.Domain\BlockchainExplorer.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Behaviors\" />
-  </ItemGroup>
-
 </Project>

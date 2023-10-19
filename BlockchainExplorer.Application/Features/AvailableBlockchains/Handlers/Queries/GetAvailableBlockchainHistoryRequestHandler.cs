@@ -4,17 +4,13 @@ using BlockchainExplorer.Application.DTOs;
 using BlockchainExplorer.Application.DTOs.Validators;
 using BlockchainExplorer.Application.Exceptions;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Queries;
+using BlockchainExplorer.Application.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Queries
 {
     public class GetAvailableBlockchainHistoryRequestHandler :
-        IRequestHandler<GetAvailableBlockchainHistoryRequest, List<AvailableBlockchainDto>>
+        IRequestHandler<GetAvailableBlockchainHistoryRequest, GetAvailableBlockchainHistoryResponse>
     {
         private readonly IBlockChainRepository _blockChainRepository;
         private readonly IMapper _mapper;
@@ -24,7 +20,7 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.
             _blockChainRepository = blockChainRepository;
             _mapper = mapper;
         }
-        public async Task<List<AvailableBlockchainDto>> Handle(GetAvailableBlockchainHistoryRequest request,
+        public async Task<GetAvailableBlockchainHistoryResponse> Handle(GetAvailableBlockchainHistoryRequest request,
             CancellationToken cancellationToken)
         {
             var validator = new HashIdValidator(_blockChainRepository);
@@ -41,8 +37,10 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.
             (p => p.HashId == request.HashId),
             (o => o.OrderByDescending(c => c.CreatedAt)));
 
-            return _mapper.Map<List<AvailableBlockchainDto>>(listOfBlockchains);
-
+            return new GetAvailableBlockchainHistoryResponse() { 
+                Success=true,
+                Data= _mapper.Map<List<AvailableBlockchainDto>>(listOfBlockchains)
+             };
         }
     }
 }
