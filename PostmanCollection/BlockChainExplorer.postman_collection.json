@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "0a25079c-8eb5-41ea-8b75-5de6c1ad0cff",
+		"name": "BlockChainExplorer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14396875"
+	},
+	"item": [
+		{
+			"name": "Cointype-btc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"hashid\", jsonData.data.response.hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7023/api/coins/cointype/btc",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7023",
+					"path": [
+						"api",
+						"coins",
+						"cointype",
+						"btc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CoinType-eth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"hashid\", jsonData.data.response.hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7023/api/coins/cointype/eth",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7023",
+					"path": [
+						"api",
+						"coins",
+						"cointype",
+						"eth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CoinType-dash",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"hashid\", jsonData.data.response.hash);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7023/api/coins/cointype/dash",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7023",
+					"path": [
+						"api",
+						"coins",
+						"cointype",
+						"dash"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ByHashId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7023/api/coins/hash/{{hashid}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7023",
+					"path": [
+						"api",
+						"coins",
+						"hash",
+						"{{hashid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

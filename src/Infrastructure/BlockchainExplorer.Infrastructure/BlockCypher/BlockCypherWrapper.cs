@@ -1,18 +1,12 @@
 ﻿using BlockchainExplorer.Application.Contracts.Infrastructure;
-using System.Net.Http;
 using BlockchainExplorer.Application.Models;
 using BlockchainExplorer.Domain.Common;
-using BlockchainExplorer.Domain.Enitites;
 using BlockchainExplorer.Domain.Enums;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace BlockchainExplorer.Infrastructure.BlockCypher
 {
@@ -39,8 +33,7 @@ namespace BlockchainExplorer.Infrastructure.BlockCypher
 
             var httpRequestMessage = new HttpRequestMessage(
                 HttpMethod.Get,
-                url)
-            { };
+                url)  { };
             try
             {
                 //To UnComent BlockCypher if API works
@@ -52,41 +45,8 @@ namespace BlockchainExplorer.Infrastructure.BlockCypher
                 //var response = await JsonSerializer.DeserializeAsync
                 //        <BlockCypherResponse>(contentStream);
 
-                //mock responses
-                //var responsemockclass = new BlockCypherResponse()
-                //{
-                //    name = coinType == CoinType.btc ? "BTC.main": (coinType == CoinType.eth ? "ETH.main" : "DASH.main"),
-                //    hash = "00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc",
-                //    height = 81242,
-                //    time = DateTime.UtcNow,
-                //    latest_url = @"https://api.blockcypher.com/v1/btc/main/blocks/00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc",
-                //    previous_hash = "0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2",
-                //    previous_url = "https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2",
-                //    peer_count = 324,
-                //    unconfirmed_count = 7234,
-                //    high_fee_per_kb = 16971,
-                //    medium_fee_per_kb = 9322,
-                //    low_fee_per_kb = 6041,
-                //    last_fork_height = 804900,
-                //    last_fork_hash = "00000000000000000004c20bfe0ed1a9b714fbc07710531b8252dc998f9ccd67"
-                //};
-                var responsemockclass = new BlockCypherResponse()
-                {
-                    hash = "000000000000000000bf56ff4a81e399374a68344a64d6681039412de78366b8",
-                    height = 360060,
-                    high_fee_per_kb = 46086,
-                    last_fork_hash = "00000000000000000aa6462fd9faf94712ce1b5a944dc666f491101c996beab9",
-                    last_fork_height = 0,
-                    latest_url = "",
-                    low_fee_per_kb = 0,
-                    medium_fee_per_kb = 29422,
-                    name = coinType == CoinType.btc ? "BTC.main" : (coinType == CoinType.eth ? "ETH.main" : "DASH.main"),
-                    peer_count = 239,
-                    previous_hash = "000000000000000011c9511ae1265d34d3c16fff6e8f94380425833b3d0ae5d8",
-                    previous_url = "https://api.blockcypher.com/v1/btc/main/blocks/000000000000000011c9511ae1265d34d3c16fff6e8f94380425833b3d0ae5d8",
-                    time = new DateTime(2023, 10, 16),
-                    unconfirmed_count = 617
-                };
+                //mock response for now
+                var responsemockclass = GenerateMockBlockCypherResponse(coinType);
 
                 string jsonString = JsonConvert.SerializeObject(responsemockclass);
                 _logger.LogInformation("jsonString is "+ jsonString);
@@ -102,6 +62,47 @@ namespace BlockchainExplorer.Infrastructure.BlockCypher
                 _logger.LogError(ex, "Error while calling blockCypher API");
                 throw;
             }
+        }
+
+        private BlockCypherResponse GenerateMockBlockCypherResponse(CoinType coinType)
+        {
+            string mockhash = GenerateMockHash(coinType);
+            return new BlockCypherResponse()
+            {
+                hash = mockhash,
+                height = 360060,
+                high_fee_per_kb = 46086,
+                last_fork_hash = "00000000000000000aa6462fd9faf94712ce1b5a944dc666f491101c996beab9",
+                last_fork_height = 0,
+                latest_url = "",
+                low_fee_per_kb = 0,
+                medium_fee_per_kb = 29422,
+                name = coinType == CoinType.btc ? "BTC.main" : (coinType == CoinType.eth ? "ETH.main" : "DASH.main"),
+                peer_count = 239,
+                previous_hash = mockhash.Replace('2','3'),
+                previous_url = $"https://api.blockcypher.com/v1/btc/main/blocks/{mockhash.Replace('2', '3')}",
+                time = new DateTime(2023, 10, 16),
+                unconfirmed_count = 617
+            };
+        }
+
+        private string GenerateMockHash(CoinType coinType)
+        {
+            string hash = "000000000000000000bf56ff4a81e399374a68344a64d6681039412de78366b8";
+            switch(coinType)
+            {
+                case CoinType.btc:
+                    hash = "000000000000000000bt96ff4a81e647824a234177a64d6681039412de1579";
+                    break;
+                case CoinType.eth:
+                    hash = "000000000000000000et85ff4a81e28467a29716a64d6681039412de3647";
+                    break;
+                case CoinType.dash:
+                    hash = "000000000000000000da28ff4a81e69741a79654a64d6681039412de3647";
+                    break;
+            }
+            return hash+coinType.ToString();
+        
         }
     }
 }

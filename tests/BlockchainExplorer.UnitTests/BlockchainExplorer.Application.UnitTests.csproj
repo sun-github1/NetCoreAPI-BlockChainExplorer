@@ -7,6 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+	  <IntermediateOutputPath>$(MSBuildThisFileDirectory)obj\</IntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
