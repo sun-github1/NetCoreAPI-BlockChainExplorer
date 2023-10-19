@@ -1,24 +1,11 @@
-﻿using AutoMapper;
-using BlockchainExplorer.Application.Contracts.Infrastructure;
-using BlockchainExplorer.Application.Contracts.Persistence;
-using BlockchainExplorer.Application.Exceptions;
-using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Commands;
+﻿using BlockchainExplorer.Application.Exceptions;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Queries;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Queries;
-using BlockchainExplorer.Application.Profiles;
-using BlockchainExplorer.Domain.Enums;
-using BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common;
-using BlockchainExplorer.UnitTests.Mocks;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BlockchainExplorer.UnitTests.Common;
 
 namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Queries
 {
-    public class GetAvailableBlockchainHistoryRequestHandlerTest: InitializeUnitTest
+    public class GetAvailableBlockchainHistoryRequestHandlerTest: UnitTestInitializer
     {
 
         private readonly GetAvailableBlockchainHistoryRequestHandler _handler;
@@ -38,7 +25,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             },CancellationToken.None);
 
             Assert.NotNull(result);
-            Assert.Equal((await mockUnitOfWork.Object.BlockChain.GetAllAsync((p=>p.HashId== inputHashId))).Count(), result.Count());
+            Assert.Equal((await mockUnitOfWork.Object.BlockChain.GetAllAsync((p=>p.HashId== inputHashId))).Count(), result.Data?.Count());
         }
 
         [Fact]

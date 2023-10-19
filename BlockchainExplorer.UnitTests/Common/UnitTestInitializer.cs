@@ -3,19 +3,14 @@ using BlockchainExplorer.Application.Contracts.Persistence;
 using BlockchainExplorer.Application.Profiles;
 using BlockchainExplorer.UnitTests.Mocks;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common
+namespace BlockchainExplorer.UnitTests.Common
 {
-    public class InitializeUnitTest
+    public class UnitTestInitializer
     {
         public readonly IMapper mapper;
         public readonly Mock<IUnitOfWork> mockUnitOfWork;
-        public InitializeUnitTest()
+        public UnitTestInitializer()
         {
             mockUnitOfWork = MockUnitOfWork.GetUnitOfWork();
             var mapperConfig = new MapperConfiguration(c =>

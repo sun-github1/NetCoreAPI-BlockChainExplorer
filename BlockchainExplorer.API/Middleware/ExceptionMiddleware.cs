@@ -36,7 +36,6 @@ namespace BlockchainExplorer.API.Middleware
             {
                 case BadRequestException badRequestException:
                     statusCode = HttpStatusCode.BadRequest;
-                    //result=badRequestException.Message;//
                     break;
                 case ValidationException validationException:
                     statusCode = HttpStatusCode.BadRequest;

@@ -1,15 +1,11 @@
-﻿using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Queries;
+﻿using BlockchainExplorer.Application.Exceptions;
+using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Queries;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Queries;
-using BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BlockchainExplorer.UnitTests.Common;
 
 namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Queries
 {
-    public class GetAvailableBlockchainRequestHandlerTest : InitializeUnitTest
+    public class GetAvailableBlockchainRequestHandlerTest : UnitTestInitializer
     {
         private readonly GetAvailableBlockchainRequestHandler _handler;
 
@@ -35,12 +31,12 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
         public async Task GetAvailableBlockchainRequestHandlerTest_DoesNotExists()
         {
             int inputId = 5555;
-            var result = await _handler.Handle(new GetAvailableBlockchainRequest()
-            {
-                Id = inputId
-            }, CancellationToken.None);
-
-            Assert.Null(result);
+            Assert.ThrowsAsync<NotFoundException>(
+              async () => await _handler.Handle(new GetAvailableBlockchainRequest()
+              {
+                  Id = inputId
+              }, CancellationToken.None)
+          );
         }
     }
 }

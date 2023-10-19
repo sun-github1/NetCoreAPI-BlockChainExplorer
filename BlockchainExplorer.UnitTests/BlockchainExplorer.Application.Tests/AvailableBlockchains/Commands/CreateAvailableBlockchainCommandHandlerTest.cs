@@ -1,28 +1,21 @@
-﻿using AutoMapper;
-using BlockchainExplorer.Application.Contracts.Infrastructure;
-using BlockchainExplorer.Application.Contracts.Persistence;
-using BlockchainExplorer.Application.DTOs;
+﻿using BlockchainExplorer.Application.Contracts.Infrastructure;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Commands;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Commands;
-using BlockchainExplorer.Application.Profiles;
 using BlockchainExplorer.Application.Responses;
 using BlockchainExplorer.Domain.Enums;
-using BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common;
-using BlockchainExplorer.UnitTests.Mocks;
+using BlockchainExplorer.UnitTests.Common;
+using Microsoft.Extensions.Logging;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Commands
 {
-    public class CreateAvailableBlockchainCommandHandlerTest: InitializeUnitTest
+    public class CreateAvailableBlockchainCommandHandlerTest: UnitTestInitializer
     {
         private readonly Mock<IBlockCypherWrapper> _mockBlockCypherWrapper = new Mock<IBlockCypherWrapper>();
         private readonly CreateAvailableBlockchainCommandHandler _handler;
-
+        private Mock<ILogger<CreateAvailableBlockchainCommandHandler>> _mockLogger = new
+            Mock<ILogger<CreateAvailableBlockchainCommandHandler>>();
         public CreateAvailableBlockchainCommandHandlerTest()
         {
             _mockBlockCypherWrapper.Setup(m => m.GetAvaialableBlockChainFromBlockCypherAPI(
@@ -43,7 +36,8 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
                 });
             _handler = new CreateAvailableBlockchainCommandHandler(mockUnitOfWork.Object,
                 mapper,
-                _mockBlockCypherWrapper.Object);
+                _mockBlockCypherWrapper.Object,
+                _mockLogger.Object);
         }
 
         [Fact]
@@ -57,9 +51,9 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             , CancellationToken.None);
 
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.True(result.Success);
-            Assert.True(result.Id>0);
+            Assert.True(result.Data?.Id>0);
 
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //check if it is added to repository
@@ -75,11 +69,10 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count>0);
-            Assert.Contains("Coin Type should not be empty", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i=>i=="Coin Type should not be empty"));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());
@@ -95,11 +88,29 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count > 0);
-            Assert.Contains("Coin Type should be of of 3 characters", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type can be max of 4 characters")));
+            var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
+            //count not increased as it is not added
+            Assert.Equal(5, allBlockChains.Count());
+        }
+
+
+        [Fact]
+        public async Task CreateAvaialableBlockChain_InputLessThan3Char_Error()
+        {
+            var result = await _handler.Handle(new CreateAvailableBlockchainCommand()
+            {
+                CreateCoinType = "ab"
+            }
+            , CancellationToken.None);
+            Assert.NotNull(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
+            Assert.False(result.Success);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type should be min of of 3 characters")));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());
@@ -114,11 +125,10 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
-            Assert.True(result.Id == 0);
-            Assert.True(result.Errors.Count > 0);
-            Assert.Contains("Only btc, eth, dash coin types are supported", result.Message);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Only btc, eth, dash coin types are supported")));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());

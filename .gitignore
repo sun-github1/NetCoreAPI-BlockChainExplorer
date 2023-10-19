@@ -4,3 +4,4 @@ obj/
 .vs/
 *.vsidx
 FileContentIndex/
+logs/
