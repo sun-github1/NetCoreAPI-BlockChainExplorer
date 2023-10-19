@@ -16,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlockchainExplorer.Application\BlockchainExplorer.Application.csproj" />
-    <ProjectReference Include="..\BlockchainExplorer.Infrastructure\BlockchainExplorer.Infrastructure.csproj" />
-    <ProjectReference Include="..\BlockchainExplorer.Persistence\BlockchainExplorer.Persistence.csproj" />
+    <ProjectReference Include="..\..\Application\BlockchainExplorer.Application\BlockchainExplorer.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\BlockchainExplorer.Infrastructure\BlockchainExplorer.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\BlockchainExplorer.Persistence\BlockchainExplorer.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
