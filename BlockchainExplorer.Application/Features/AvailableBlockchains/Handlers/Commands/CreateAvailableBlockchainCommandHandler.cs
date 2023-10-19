@@ -8,7 +8,7 @@ using BlockchainExplorer.Application.Responses;
 using BlockchainExplorer.Domain.Enitites;
 using BlockchainExplorer.Domain.Enums;
 using MediatR;
-using Microsoft.VisualBasic;
+using Microsoft.Extensions.Logging;
 
 namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Commands
 {
@@ -18,18 +18,22 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IBlockCypherWrapper _blockCypherWrapper;
+        private readonly ILogger<CreateAvailableBlockchainCommandHandler> _logger;
         public CreateAvailableBlockchainCommandHandler(
             IUnitOfWork unitOfWork,
             IMapper mapper,
-            IBlockCypherWrapper blockCypherWrapper)
+            IBlockCypherWrapper blockCypherWrapper,
+            ILogger<CreateAvailableBlockchainCommandHandler> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _blockCypherWrapper = blockCypherWrapper;
+            _logger = logger;
         }
         public async Task<BaseCommandResponse> Handle(CreateAvailableBlockchainCommand request,
             CancellationToken cancellationToken)
         {
+            _logger.LogInformation($"CreateAvailableBlockchainCommand received for cointype {request.CreateCoinType}");
             var response = new BaseCommandResponse();
             var validator = new CoinTypeValidator();
             var validationResult = await validator.ValidateAsync(request.CreateCoinType);
@@ -53,6 +57,7 @@ namespace BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.
                     response.Success = true;
                     response.Message = "Creation Successful";
                     response.Id = result.Id;
+                    _logger.LogInformation($"AvailableBlockchain created in database successfully having Id {result.Id} and hash {serviceResponse.hash}");
                     return response;
                 }
             }

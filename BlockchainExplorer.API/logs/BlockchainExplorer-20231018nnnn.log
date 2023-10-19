@@ -1,0 +1,71 @@
+2023-10-18 17:50:53 [Information] Now listening on: https://localhost:7023
+2023-10-18 17:50:53 [Information] Now listening on: http://localhost:5282
+2023-10-18 17:50:53 [Information] Application started. Press Ctrl+C to shut down.
+2023-10-18 17:50:53 [Information] Hosting environment: Development
+2023-10-18 17:50:53 [Information] Content root path: D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\
+2023-10-18 17:50:55 [Information] Request starting HTTP/2 GET https://localhost:7023/swagger/index.html - -
+2023-10-18 17:50:56 [Information] Request finished HTTP/2 GET https://localhost:7023/swagger/index.html - - - 200 - text/html;charset=utf-8 644.8189ms
+2023-10-18 17:50:56 [Information] Request starting HTTP/2 GET https://localhost:7023/_framework/aspnetcore-browser-refresh.js - -
+2023-10-18 17:50:56 [Information] Request finished HTTP/2 GET https://localhost:7023/_framework/aspnetcore-browser-refresh.js - - - 200 12375 application/javascript;+charset=utf-8 27.1776ms
+2023-10-18 17:50:56 [Information] Request starting HTTP/2 GET https://localhost:7023/_vs/browserLink - -
+2023-10-18 17:50:56 [Information] Request finished HTTP/2 GET https://localhost:7023/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 111.8265ms
+2023-10-18 17:50:56 [Information] Request starting HTTP/2 GET https://localhost:7023/swagger/v1/swagger.json - -
+2023-10-18 17:50:57 [Information] Request finished HTTP/2 GET https://localhost:7023/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1018.1959ms
+2023-10-18 17:51:19 [Information] Request starting HTTP/1.1 GET https://localhost:7023/api/coins/btc - -
+2023-10-18 17:51:19 [Information] Executing endpoint 'BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API)'
+2023-10-18 17:51:19 [Information] Route matched with {action = "GetAndStoreAvailableBlockChain", controller = "Coins"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BlockchainExplorer.Application.DTOs.AvailableBlockchainDto]] GetAndStoreAvailableBlockChain(System.String) on controller BlockchainExplorer.API.Controllers.CoinsController (BlockchainExplorer.API).
+2023-10-18 17:51:20 [Information] jsonString is {"name":"BTC.main","height":81242,"hash":"00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc","time":"2023-10-18T13:51:20.2532219Z","latest_url":"https://api.blockcypher.com/v1/btc/main/blocks/00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc","previous_hash":"0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2","previous_url":"https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2","peer_count":324,"unconfirmed_count":7234,"high_fee_per_kb":16971,"medium_fee_per_kb":9322,"low_fee_per_kb":6041,"last_fork_height":804900,"last_fork_hash":"00000000000000000004c20bfe0ed1a9b714fbc07710531b8252dc998f9ccd67"}
+2023-10-18 17:51:23 [Information] Executed DbCommand (220ms) [Parameters=[@p0='?' (Size = 708), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AvailableBlockchains] ([Response], [CoinType], [CreatedAt], [HashId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-10-18 17:51:24 [Information] Executed DbCommand (16ms) [Parameters=[@__request_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CoinType], [a].[CreatedAt], [a].[HashId], JSON_QUERY([a].[Response],'$')
+FROM [AvailableBlockchains] AS [a]
+WHERE [a].[Id] = @__request_Id_0
+2023-10-18 17:51:24 [Information] Executing OkObjectResult, writing value of type 'BlockchainExplorer.Application.DTOs.AvailableBlockchainDto'.
+2023-10-18 17:51:24 [Information] Executed action BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API) in 5390.7697ms
+2023-10-18 17:51:24 [Information] Executed endpoint 'BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API)'
+2023-10-18 17:51:24 [Information] HTTP GET /api/coins/btc responded 200 in 5470.1104 ms
+2023-10-18 17:51:24 [Information] Request finished HTTP/1.1 GET https://localhost:7023/api/coins/btc - - - 200 - application/json;+charset=utf-8 5511.3723ms
+2023-10-18 18:05:17 [Information] Now listening on: https://localhost:7023
+2023-10-18 18:05:17 [Information] Now listening on: http://localhost:5282
+2023-10-18 18:05:17 [Information] Application started. Press Ctrl+C to shut down.
+2023-10-18 18:05:17 [Information] Hosting environment: Development
+2023-10-18 18:05:17 [Information] Content root path: D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\
+2023-10-18 18:05:18 [Information] Request starting HTTP/2 GET https://localhost:7023/swagger/index.html - -
+2023-10-18 18:05:19 [Information] Request starting HTTP/2 GET https://localhost:7023/_framework/aspnetcore-browser-refresh.js - -
+2023-10-18 18:05:19 [Information] Request finished HTTP/2 GET https://localhost:7023/swagger/index.html - - - 200 - text/html;charset=utf-8 660.2044ms
+2023-10-18 18:05:19 [Information] Request finished HTTP/2 GET https://localhost:7023/_framework/aspnetcore-browser-refresh.js - - - 200 12375 application/javascript;+charset=utf-8 20.5960ms
+2023-10-18 18:05:19 [Information] Request starting HTTP/2 GET https://localhost:7023/_vs/browserLink - -
+2023-10-18 18:05:19 [Information] Request finished HTTP/2 GET https://localhost:7023/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 44.3212ms
+2023-10-18 18:05:19 [Information] Request starting HTTP/2 GET https://localhost:7023/swagger/v1/swagger.json - -
+2023-10-18 18:05:19 [Information] Request finished HTTP/2 GET https://localhost:7023/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 234.4221ms
+2023-10-18 18:05:23 [Information] Request starting HTTP/1.1 GET https://localhost:7023/api/coins/btc - -
+2023-10-18 18:05:23 [Information] Executing endpoint 'BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API)'
+2023-10-18 18:05:23 [Information] Route matched with {action = "GetAndStoreAvailableBlockChain", controller = "Coins"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[BlockchainExplorer.Application.DTOs.AvailableBlockchainDto]] GetAndStoreAvailableBlockChain(System.String) on controller BlockchainExplorer.API.Controllers.CoinsController (BlockchainExplorer.API).
+2023-10-18 18:05:24 [Information] CreateAvailableBlockchainCommand received for cointype btc
+2023-10-18 18:05:24 [Information] jsonString is {"name":"BTC.main","height":81242,"hash":"00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc","time":"2023-10-18T14:05:24.2901649Z","latest_url":"https://api.blockcypher.com/v1/btc/main/blocks/00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc","previous_hash":"0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2","previous_url":"https://api.blockcypher.com/v1/btc/main/blocks/0000000000000000000221a3a70b2d9184cc13734f0589f8f5119edee6dabec2","peer_count":324,"unconfirmed_count":7234,"high_fee_per_kb":16971,"medium_fee_per_kb":9322,"low_fee_per_kb":6041,"last_fork_height":804900,"last_fork_hash":"00000000000000000004c20bfe0ed1a9b714fbc07710531b8252dc998f9ccd67"}
+2023-10-18 18:05:26 [Information] Executed DbCommand (166ms) [Parameters=[@p0='?' (Size = 708), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AvailableBlockchains] ([Response], [CoinType], [CreatedAt], [HashId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-10-18 18:05:26 [Information] AvailableBlockchain created in database successfully having Id 8 and hash 00000000000000000003762b7dec5a3c7bea6d6c1c94b7d51dbb4b3585d03fdc
+2023-10-18 18:05:27 [Information] Executed DbCommand (6ms) [Parameters=[@__request_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CoinType], [a].[CreatedAt], [a].[HashId], JSON_QUERY([a].[Response],'$')
+FROM [AvailableBlockchains] AS [a]
+WHERE [a].[Id] = @__request_Id_0
+2023-10-18 18:05:27 [Information] Executing OkObjectResult, writing value of type 'BlockchainExplorer.Application.DTOs.AvailableBlockchainDto'.
+2023-10-18 18:05:27 [Information] Executed action BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API) in 3997.431ms
+2023-10-18 18:05:27 [Information] Executed endpoint 'BlockchainExplorer.API.Controllers.CoinsController.GetAndStoreAvailableBlockChain (BlockchainExplorer.API)'
+2023-10-18 18:05:27 [Information] HTTP GET /api/coins/btc responded 200 in 4083.9352 ms
+2023-10-18 18:05:27 [Information] Request finished HTTP/1.1 GET https://localhost:7023/api/coins/btc - - - 200 - application/json;+charset=utf-8 4120.4297ms
+2023-10-18 18:06:33 [Information] Now listening on: https://localhost:7023
+2023-10-18 18:06:33 [Information] Now listening on: http://localhost:5282
+2023-10-18 18:06:33 [Information] Application started. Press Ctrl+C to shut down.
+2023-10-18 18:06:33 [Information] Hosting environment: Development
+2023-10-18 18:06:33 [Information] Content root path: D:\Tutorials\Projects\Test\BlockchainExplorer\BlockchainExplorer.API\

@@ -1,28 +1,21 @@
-﻿using AutoMapper;
-using BlockchainExplorer.Application.Contracts.Infrastructure;
-using BlockchainExplorer.Application.Contracts.Persistence;
-using BlockchainExplorer.Application.DTOs;
+﻿using BlockchainExplorer.Application.Contracts.Infrastructure;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Commands;
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Commands;
-using BlockchainExplorer.Application.Profiles;
 using BlockchainExplorer.Application.Responses;
 using BlockchainExplorer.Domain.Enums;
-using BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common;
-using BlockchainExplorer.UnitTests.Mocks;
+using BlockchainExplorer.UnitTests.Common;
+using Microsoft.Extensions.Logging;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Commands
 {
-    public class CreateAvailableBlockchainCommandHandlerTest: InitializeUnitTest
+    public class CreateAvailableBlockchainCommandHandlerTest: UnitTestInitializer
     {
         private readonly Mock<IBlockCypherWrapper> _mockBlockCypherWrapper = new Mock<IBlockCypherWrapper>();
         private readonly CreateAvailableBlockchainCommandHandler _handler;
-
+        private Mock<ILogger<CreateAvailableBlockchainCommandHandler>> _mockLogger = new
+            Mock<ILogger<CreateAvailableBlockchainCommandHandler>>();
         public CreateAvailableBlockchainCommandHandlerTest()
         {
             _mockBlockCypherWrapper.Setup(m => m.GetAvaialableBlockChainFromBlockCypherAPI(
@@ -43,7 +36,8 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
                 });
             _handler = new CreateAvailableBlockchainCommandHandler(mockUnitOfWork.Object,
                 mapper,
-                _mockBlockCypherWrapper.Object);
+                _mockBlockCypherWrapper.Object,
+                _mockLogger.Object);
         }
 
         [Fact]

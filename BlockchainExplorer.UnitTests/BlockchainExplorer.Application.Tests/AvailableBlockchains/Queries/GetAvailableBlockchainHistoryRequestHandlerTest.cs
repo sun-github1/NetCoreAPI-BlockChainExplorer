@@ -7,7 +7,7 @@ using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Quer
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Queries;
 using BlockchainExplorer.Application.Profiles;
 using BlockchainExplorer.Domain.Enums;
-using BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Common;
+using BlockchainExplorer.UnitTests.Common;
 using BlockchainExplorer.UnitTests.Mocks;
 using Moq;
 using System;
@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Queries
 {
-    public class GetAvailableBlockchainHistoryRequestHandlerTest: InitializeUnitTest
+    public class GetAvailableBlockchainHistoryRequestHandlerTest: UnitTestInitializer
     {
 
         private readonly GetAvailableBlockchainHistoryRequestHandler _handler;

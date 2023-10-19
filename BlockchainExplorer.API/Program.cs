@@ -3,7 +3,7 @@ using BlockchainExplorer.Application;
 using BlockchainExplorer.Infrastructure;
 using BlockchainExplorer.Persistence;
 using Microsoft.Extensions.Configuration;
-
+using Serilog;
 
 namespace BlockchainExplorer.API
 {
@@ -12,6 +12,16 @@ namespace BlockchainExplorer.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Configure Serilog
+            builder.Host.UseSerilog((hostContext, services, configuration) =>
+            {
+                // Read Serilog settings from appsettings.json
+                configuration.ReadFrom.Configuration(hostContext.Configuration);
+                //// Write logs to console
+                //configuration.WriteTo.Console();
+            });
+
 
             // Add services to the container.
             builder.Services.ConfigureApplicationServices();
@@ -45,6 +55,9 @@ namespace BlockchainExplorer.API
             app.UseAuthorization();
 
             app.UseCors("CorsPolicy");
+
+            // Use Serilog request logging middleware
+            app.UseSerilogRequestLogging();
 
             app.MapControllers();
 
