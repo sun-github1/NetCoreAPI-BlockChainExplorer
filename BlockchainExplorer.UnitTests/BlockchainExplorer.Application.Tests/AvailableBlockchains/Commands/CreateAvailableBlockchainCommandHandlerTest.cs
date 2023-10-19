@@ -91,7 +91,26 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
             Assert.Null(result.Data);
-            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type should be of of 3 characters")));
+            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type can be max of 4 characters")));
+            var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
+            //count not increased as it is not added
+            Assert.Equal(5, allBlockChains.Count());
+        }
+
+
+        [Fact]
+        public async Task CreateAvaialableBlockChain_InputLessThan3Char_Error()
+        {
+            var result = await _handler.Handle(new CreateAvailableBlockchainCommand()
+            {
+                CreateCoinType = "ab"
+            }
+            , CancellationToken.None);
+            Assert.NotNull(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
+            Assert.False(result.Success);
+            Assert.Null(result.Data);
+            Assert.True(result.Errors?.Any(i => i.Contains("Coin Type should be min of of 3 characters")));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());
