@@ -51,7 +51,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             , CancellationToken.None);
 
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.True(result.Success);
             Assert.True(result.Data?.Id>0);
 
@@ -69,7 +69,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
             Assert.Null(result.Data);
             Assert.True(result.Errors?.Any(i=>i=="Coin Type should not be empty"));
@@ -88,7 +88,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
             Assert.Null(result.Data);
             Assert.True(result.Errors?.Any(i => i.Contains("Coin Type should be of of 3 characters")));
@@ -106,7 +106,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             }
             , CancellationToken.None);
             Assert.NotNull(result);
-            Assert.IsType<BaseCommandResponse>(result);
+            Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
             Assert.Null(result.Data);
             Assert.True(result.Errors?.Any(i => i.Contains("Only btc, eth, dash coin types are supported")));

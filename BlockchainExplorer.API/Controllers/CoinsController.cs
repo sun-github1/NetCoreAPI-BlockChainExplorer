@@ -17,7 +17,7 @@ namespace BlockchainExplorer.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{coinType}")]
+        [HttpGet("cointype/{coinType}")]
         public async Task<ActionResult<AvailableBlockchainResponse>> GetAndStoreAvailableBlockChain([Required] string coinType)
         {
             var resultOfCreation = await _mediator.Send(new CreateAvailableBlockchainCommand() { CreateCoinType = coinType });
