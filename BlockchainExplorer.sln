@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Persiste
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.API", "src\Web\BlockchainExplorer.API\BlockchainExplorer.API.csproj", "{B39DE0E7-F075-4334-8D2C-9A22D779DEE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainExplorer.UnitTests", "tests\BlockchainExplorer.UnitTests\BlockchainExplorer.UnitTests.csproj", "{17BC1C36-715A-43F6-8983-0C75D19846F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainExplorer.Application.UnitTests", "tests\BlockchainExplorer.UnitTests\BlockchainExplorer.Application.UnitTests.csproj", "{17BC1C36-715A-43F6-8983-0C75D19846F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

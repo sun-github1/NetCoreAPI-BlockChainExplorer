@@ -8,9 +8,9 @@ using Microsoft.Extensions.Logging;
 using Moq;
 
 
-namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Commands
+namespace BlockchainExplorer.Application.UnitTests.AvailableBlockchains.Commands
 {
-    public class CreateAvailableBlockchainCommandHandlerTest: UnitTestInitializer
+    public class CreateAvailableBlockchainCommandHandlerTest : UnitTestInitializer
     {
         private readonly Mock<IBlockCypherWrapper> _mockBlockCypherWrapper = new Mock<IBlockCypherWrapper>();
         private readonly CreateAvailableBlockchainCommandHandler _handler;
@@ -53,11 +53,11 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.NotNull(result);
             Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.True(result.Success);
-            Assert.True(result.Data?.Id>0);
+            Assert.True(result.Data?.Id > 0);
 
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //check if it is added to repository
-            Assert.Equal(initialCountOfBlockChains+1, allBlockChains.Count());
+            Assert.Equal(initialCountOfBlockChains + 1, allBlockChains.Count());
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             Assert.IsType<AvailableBlockchainResponse>(result);
             Assert.False(result.Success);
             Assert.Null(result.Data);
-            Assert.True(result.Errors?.Any(i=>i=="Coin Type should not be empty"));
+            Assert.True(result.Errors?.Any(i => i == "Coin Type should not be empty"));
             var allBlockChains = await mockUnitOfWork.Object.BlockChain.GetAllAsync();
             //count not increased as it is not added
             Assert.Equal(5, allBlockChains.Count());

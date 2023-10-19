@@ -3,7 +3,7 @@ using BlockchainExplorer.Application.Features.AvailableBlockchains.Handlers.Quer
 using BlockchainExplorer.Application.Features.AvailableBlockchains.Requests.Queries;
 using BlockchainExplorer.UnitTests.Common;
 
-namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.AvailableBlockchains.Queries
+namespace BlockchainExplorer.Application.UnitTests.AvailableBlockchains.Queries
 {
     public class GetAvailableBlockchainRequestHandlerTest : UnitTestInitializer
     {
@@ -21,7 +21,7 @@ namespace BlockchainExplorer.UnitTests.BlockchainExplorer.Application.Tests.Avai
             int inputId = 1004;
             var result = await _handler.Handle(new GetAvailableBlockchainRequest()
             {
-                Id= inputId
+                Id = inputId
             }, CancellationToken.None);
 
             Assert.NotNull(result);
