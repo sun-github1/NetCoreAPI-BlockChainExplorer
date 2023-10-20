@@ -18,8 +18,6 @@ namespace BlockchainExplorer.API
             {
                 // Read Serilog settings from appsettings.json
                 configuration.ReadFrom.Configuration(hostContext.Configuration);
-                //// Write logs to console
-                //configuration.WriteTo.Console();
             });
 
 

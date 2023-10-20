@@ -1,13 +1,7 @@
 ﻿using BlockchainExplorer.Application.Contracts.Persistence;
 using BlockchainExplorer.Domain.Enitites;
-using Castle.Core.Resource;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlockchainExplorer.UnitTests.Mocks
 {
@@ -136,11 +130,6 @@ namespace BlockchainExplorer.UnitTests.Mocks
             var mockRepo = new Mock<IBlockChainRepository>();
 
             Expression<Func<string, bool>> testExpression = binding => (binding == "Testing Framework");
-            //mockRepo.Setup(r => r.GetAllAsync(It.IsAny<Expression<Func<AvailableBlockchain, bool>>>()
-            //    , It.IsAny<Func<IQueryable<AvailableBlockchain>, IOrderedQueryable<AvailableBlockchain>>>()
-            //    , It.IsAny<string>()
-            //    , It.IsAny<bool>()
-            //    )).ReturnsAsync(new List<AvailableBlockchain>());
             _ = mockRepo.Setup(r => r.GetAllAsync(It.IsAny<Expression<Func<AvailableBlockchain, bool>>>()
                 , It.IsAny<Func<IQueryable<AvailableBlockchain>, IOrderedQueryable<AvailableBlockchain>>>()
                 , It.IsAny<string>()

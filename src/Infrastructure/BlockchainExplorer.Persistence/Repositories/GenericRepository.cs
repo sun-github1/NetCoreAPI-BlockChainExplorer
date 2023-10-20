@@ -1,11 +1,6 @@
 ﻿using BlockchainExplorer.Application.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlockchainExplorer.Persistence.Repositories
 {
@@ -84,10 +79,5 @@ namespace BlockchainExplorer.Persistence.Repositories
             return await query.ToListAsync();
         }
 
-        //public async Task Remove(int id)
-        //{
-        //    var entity = await dbSet.FindAsync(id);
-        //    dbSet.Remove(entity);
-        //}
     }
 }
